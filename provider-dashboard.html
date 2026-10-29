@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provider Business Dashboard — LocalConnect</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6H4a1 1 0 0 1-1-1v-9.5z"/>
+          </svg>
+        </div>
+        <span>Local<span>Connect</span> <small style="font-size: 0.75rem; font-weight: 700; color: var(--color-accent); text-transform: uppercase; letter-spacing: 0.05em; margin-left: 0.25rem;">Pro Portal</small></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Marketplace Home</a></li>
+        <li><a href="services.html" class="nav-link">Services Directory</a></li>
+        <li><a href="provider.html?id=p1" class="nav-link">My Public Profile</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Switch to Customer</a>
+        <button type="button" id="open-pro-modal-btn" class="btn btn-accent btn-sm">
+          ★ Go Pro
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Provider Portal Header -->
+    <section class="dashboard-header">
+      <div class="container">
+        <div class="flex justify-between items-center flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=256&q=80" alt="Rajesh Verma" style="width: 64px; height: 64px; border-radius: var(--radius-full); object-fit: cover; border: 3px solid var(--color-primary-light);" />
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 style="font-size: 2rem; margin: 0;">Rajesh Verma</h1>
+                <span id="prov-pro-badge" class="badge badge-rating" style="display: none; font-size: 0.7rem;">★ PRO MEMBER</span>
+              </div>
+              <p style="margin: 0; color: var(--color-text-secondary); font-size: 0.9rem;">
+                Licensed Master Plumber • LocalConnect Partner since 2024 (Bengaluru)
+              </p>
+            </div>
+          </div>
+
+          <!-- Availability Switch -->
+          <div class="card" style="padding: 0.75rem 1.25rem; display: flex; align-items: center; gap: 1rem;">
+            <div>
+              <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--color-text-muted); font-weight: 700;">Status</div>
+              <div id="prov-availability-label" style="font-size: 0.9rem; font-weight: 700; color: var(--color-success);">
+                Available for New Jobs
+              </div>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="prov-availability-switch" checked />
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Section -->
+    <section class="section">
+      <div class="container">
+        
+        <!-- KPI Metrics Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">New Requests</div>
+            <div id="stat-prov-requests" class="stat-value" style="color: var(--color-accent);">1</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Completed Jobs</div>
+            <div id="stat-prov-completed" class="stat-value">148</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Client Rating</div>
+            <div id="stat-prov-rating" class="stat-value" style="color: #F59E0B;">★ 4.9</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Profile Views (30d)</div>
+            <div id="stat-prov-views" class="stat-value">1,850</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Monthly Earnings</div>
+            <div id="stat-prov-earnings" class="stat-value" style="color: var(--color-success);">₹48,500</div>
+          </div>
+        </div>
+
+        <!-- Provider Tab Bar -->
+        <div class="tabs-nav">
+          <button type="button" class="tab-btn prov-tab-btn active" data-tab="prov-tab-requests">
+            Booking Requests Queue 
+            <span id="prov-requests-badge" class="badge badge-rating" style="font-size: 0.75rem; margin-left: 0.35rem;">1</span>
+          </button>
+          <button type="button" class="tab-btn prov-tab-btn" data-tab="prov-tab-jobs">
+            Jobs & Service History
+          </button>
+          <button type="button" class="tab-btn prov-tab-btn" data-tab="prov-tab-profile">
+            Pricing & Profile Setup
+          </button>
+          <button type="button" class="tab-btn prov-tab-btn" data-tab="prov-tab-pro">
+            LocalConnect Pro Plan
+          </button>
+        </div>
+
+        <!-- Tab 1: Requests Queue -->
+        <div id="prov-tab-requests" class="tab-content prov-tab-pane active">
+          <div style="margin-bottom: 1rem; font-size: 0.95rem; color: var(--color-text-secondary);">
+            Incoming booking requests from neighborhood customers. Accepting a request confirms the appointment.
+          </div>
+          <div id="prov-requests-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Jobs History -->
+        <div id="prov-tab-jobs" class="tab-content prov-tab-pane">
+          <div id="prov-jobs-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 3: Profile & Pricing Management -->
+        <div id="prov-tab-profile" class="tab-content prov-tab-pane">
+          <div class="card" style="max-width: 680px; padding: 2rem;">
+            <h3 style="margin-bottom: 1.25rem;">Rate & Service Availability</h3>
+            
+            <div class="form-group">
+              <label class="form-label">Base Diagnostic / Starting Rate (₹)</label>
+              <div class="flex items-center gap-2">
+                <input type="number" id="prov-hourly-rate-input" class="form-control" style="max-width: 160px;" min="100" max="2500" />
+                <button type="button" id="prov-save-rate-btn" class="btn btn-primary btn-sm">Update Rate</button>
+              </div>
+              <small style="color: var(--color-text-muted); margin-top: 0.35rem; display: block;">
+                Displayed to customers on your public profile and search directory.
+              </small>
+            </div>
+
+            <div class="form-group" style="margin-top: 1.5rem;">
+              <label class="form-label">Active Trade Category</label>
+              <input type="text" class="form-control" value="Plumbing & Pipe Repair" readonly style="background-color: var(--color-bg);" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Service Area Radius</label>
+              <input type="text" class="form-control" value="Koramangala, HSR Layout & Bellandur (within 10 km)" readonly style="background-color: var(--color-bg);" />
+            </div>
+
+            <div class="flex gap-2" style="margin-top: 2rem; border-top: 1px solid var(--color-border); padding-top: 1.25rem;">
+              <a href="provider.html?id=p1" class="btn btn-outline btn-sm">Preview Public Profile</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 4: LocalConnect Pro -->
+        <div id="prov-tab-pro" class="tab-content prov-tab-pane">
+          <div class="pro-card-promo">
+            <h2 style="color: #FFFFFF; font-size: 2rem; margin-bottom: 0.5rem;">Accelerate Your Local Business with Pro</h2>
+            <p style="color: #CBD5E1; max-width: 640px; margin-bottom: 2rem; font-size: 1.05rem;">
+              LocalConnect Pro gives serious tradespeople higher search ranking, 0% platform commission, priority lead alerts, and verified trust badges.
+            </p>
+
+            <div class="grid grid-cols-2 gap-3" style="max-width: 700px; margin-bottom: 2rem;">
+              <div style="background: rgba(255,255,255,0.1); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.15);">
+                <div style="font-weight: 700; font-size: 1.1rem; color: #FFFFFF; margin-bottom: 0.25rem;">Basic (Free)</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.75rem;">₹0<small style="font-size: 0.8rem; font-weight: 400;">/mo</small></div>
+                <ul style="list-style: none; font-size: 0.85rem; color: #CBD5E1; display: flex; flex-direction: column; gap: 0.4rem;">
+                  <li>✓ Standard directory listing</li>
+                  <li>✓ Receive customer bookings</li>
+                  <li>⚠️ 10% platform service fee</li>
+                  <li>✕ Standard search position</li>
+                </ul>
+              </div>
+
+              <div style="background: rgba(255, 107, 90, 0.15); padding: 1.25rem; border-radius: var(--radius-md); border: 2px solid var(--color-accent);">
+                <div style="font-weight: 700; font-size: 1.1rem; color: var(--color-accent); margin-bottom: 0.25rem;">LocalConnect Pro ★</div>
+                <div style="font-size: 1.5rem; font-weight: 800; color: #FFFFFF; margin-bottom: 0.75rem;">₹499<small style="font-size: 0.8rem; font-weight: 400;">/mo</small></div>
+                <ul style="list-style: none; font-size: 0.85rem; color: #FFFFFF; display: flex; flex-direction: column; gap: 0.4rem;">
+                  <li>✓ <strong>0% Platform Commission</strong></li>
+                  <li>✓ <strong>Featured Top Placement</strong></li>
+                  <li>✓ Verified Gold Pro Badge</li>
+                  <li>✓ Instant SMS Lead Notifications</li>
+                </ul>
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-accent btn-lg" onclick="document.getElementById('open-pro-modal-btn').click();">
+              Activate 14-Day Free Pro Trial
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Pro Upgrade Modal -->
+  <div id="pro-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <button type="button" id="close-pro-modal-btn" class="modal-close-btn" aria-label="Close modal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <span class="badge badge-rating" style="margin-bottom: 0.75rem; font-size: 0.8rem;">★ LocalConnect Pro</span>
+        <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Grow Your Local Business</h2>
+        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">
+          Keep 100% of your earnings with 0% platform commission and top placement in search.
+        </p>
+      </div>
+
+      <div style="background-color: var(--color-bg); padding: 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; border: 1px solid var(--color-border);">
+        <div class="flex justify-between items-center" style="margin-bottom: 0.5rem;">
+          <span style="font-weight: 600; color: var(--color-primary);">Plan: Pro Monthly</span>
+          <strong style="color: var(--color-primary); font-size: 1.2rem;">₹499.00 / month</strong>
+        </div>
+        <div style="font-size: 0.85rem; color: var(--color-success); font-weight: 600;">
+          First 14 days completely free. Cancel anytime with 1 click.
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <button type="button" id="start-pro-trial-btn" class="btn btn-accent btn-lg" style="width: 100%;">
+          Start 14-Day Free Pro Trial
+        </button>
+        <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('pro-modal').classList.remove('active');">
+          Maybe Later
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>© 2026 LocalConnect Marketplace India Pvt. Ltd. All rights reserved.</div>
+        <div class="flex gap-3">
+          <a href="index.html">Marketplace</a>
+          <a href="dashboard.html">Customer Dashboard</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/provider-dashboard.js"></script>
+</body>
+</html>

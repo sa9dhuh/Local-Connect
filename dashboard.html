@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Dashboard — LocalConnect</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6H4a1 1 0 0 1-1-1v-9.5z"/>
+          </svg>
+        </div>
+        <span>Local<span>Connect</span></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="services.html" class="nav-link">Find a Provider</a></li>
+        <li><a href="dashboard.html" class="nav-link active">My Bookings</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="provider-dashboard.html" class="btn btn-outline btn-sm">Switch to Provider</a>
+        <div class="flex items-center gap-1" style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary); background-color: var(--color-bg); padding: 0.35rem 0.75rem; border-radius: var(--radius-full); border: 1px solid var(--color-border);">
+          <span style="width: 8px; height: 8px; border-radius: 50%; background-color: var(--color-success); display: inline-block;"></span>
+          Rohan Mehta
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+      <div class="container">
+        <div class="flex justify-between items-center flex-wrap gap-2">
+          <div>
+            <span class="section-subtitle">Customer Portal</span>
+            <h1 style="font-size: 2.25rem;">My Dashboard</h1>
+            <p style="margin-bottom: 0;">Track your appointments, view booked services, and manage saved professionals.</p>
+          </div>
+          <a href="services.html" class="btn btn-accent btn-md">
+            + Book a New Service
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Dashboard Section -->
+    <section class="section">
+      <div class="container">
+        
+        <!-- Stats Summary Grid -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Upcoming Bookings</div>
+            <div id="stat-upcoming-count" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Completed Services</div>
+            <div id="stat-completed-count" class="stat-value">0</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Saved Favorites</div>
+            <div id="stat-favorites-count" class="stat-value">0</div>
+          </div>
+        </div>
+
+        <!-- Dashboard Tabs -->
+        <div class="tabs-nav">
+          <button type="button" class="tab-btn dashboard-tab-btn active" data-tab="tab-bookings">
+            My Bookings
+          </button>
+          <button type="button" class="tab-btn dashboard-tab-btn" data-tab="tab-favorites">
+            Saved Favorites
+          </button>
+          <button type="button" class="tab-btn dashboard-tab-btn" data-tab="tab-reviews">
+            My Reviews
+          </button>
+          <button type="button" class="tab-btn dashboard-tab-btn" data-tab="tab-account">
+            Account Details
+          </button>
+        </div>
+
+        <!-- Tab 1: My Bookings -->
+        <div id="tab-bookings" class="tab-content dashboard-tab-pane active">
+          <div id="customer-bookings-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 2: Saved Favorites -->
+        <div id="tab-favorites" class="tab-content dashboard-tab-pane">
+          <div id="customer-favorites-grid" class="grid grid-cols-3 gap-3">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 3: My Reviews -->
+        <div id="tab-reviews" class="tab-content dashboard-tab-pane">
+          <div id="customer-reviews-container">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- Tab 4: Account Details -->
+        <div id="tab-account" class="tab-content dashboard-tab-pane">
+          <div class="card" style="max-width: 600px; padding: 2rem;">
+            <h3 style="margin-bottom: 1.25rem;">Account Information</h3>
+            <div class="form-group">
+              <label class="form-label">Full Name</label>
+              <input type="text" class="form-control" value="Rohan Mehta" readonly />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Email Address</label>
+              <input type="email" class="form-control" value="rohan.mehta@example.com" readonly />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" value="+91 98765 43210" readonly />
+            </div>
+            <div class="form-group">
+              <label class="form-label">Primary Service Address</label>
+              <input type="text" class="form-control" value="Flat 402, Green Glen Layout, Bellandur, Bengaluru, Karnataka" readonly />
+            </div>
+            <div style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;">
+              ℹ️ Prototype mode: user details are stored in browser localStorage.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom" style="border: none; padding-top: 0;">
+        <div>© 2026 LocalConnect Marketplace India Pvt. Ltd. All rights reserved.</div>
+        <div class="flex gap-3">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="provider-dashboard.html">Provider Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Provider Profile — LocalConnect</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6H4a1 1 0 0 1-1-1v-9.5z"/>
+          </svg>
+        </div>
+        <span>Local<span>Connect</span></span>
+      </a>
+
+      <ul class="nav-menu">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="services.html" class="nav-link">Services</a></li>
+        <li><a href="services.html" class="nav-link">Find a Provider</a></li>
+        <li>
+          <a href="dashboard.html" class="nav-link">
+            My Bookings 
+            <span class="badge badge-rating bookings-count-badge" style="display:none; font-size: 0.7rem; padding: 2px 6px;">0</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="dashboard.html" class="btn btn-outline btn-sm">Dashboard</a>
+        <a href="provider-dashboard.html" class="btn btn-primary btn-sm">Join as Provider</a>
+        <button class="mobile-toggle" aria-label="Toggle navigation menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <!-- Breadcrumbs -->
+    <div style="background-color: var(--color-surface); padding: 0.85rem 0; border-bottom: 1px solid var(--color-border-subtle); font-size: 0.85rem; color: var(--color-text-muted);">
+      <div class="container flex items-center gap-1">
+        <a href="index.html" style="color: var(--color-text-muted);">Home</a>
+        <span>/</span>
+        <a href="services.html" style="color: var(--color-text-muted);">Services</a>
+        <span>/</span>
+        <span style="color: var(--color-primary); font-weight: 600;">Provider Profile</span>
+      </div>
+    </div>
+
+    <!-- Provider Hero Header -->
+    <section class="provider-profile-hero">
+      <div class="container">
+        <div class="provider-hero-grid">
+          <!-- Avatar -->
+          <div class="profile-avatar-lg">
+            <img id="provider-hero-avatar" src="" alt="Provider Profile" />
+          </div>
+
+          <!-- Middle Details -->
+          <div class="profile-details">
+            <div class="flex items-center gap-2" style="margin-bottom: 0.35rem;">
+              <span id="provider-hero-category" class="badge badge-category">Trade</span>
+              <span id="provider-hero-availability" class="badge badge-status-completed">Available Today</span>
+            </div>
+            <h1 id="provider-hero-name">Loading...</h1>
+            <p id="provider-hero-tagline" style="font-size: 1.05rem; margin-bottom: 0.75rem; color: var(--color-text-secondary);"></p>
+            
+            <div class="flex items-center gap-3 flex-wrap" style="font-size: 0.9rem; color: var(--color-text-secondary);">
+              <span id="provider-hero-rating" class="badge badge-rating" style="font-size: 0.85rem;">★ 5.0</span>
+              <div class="flex items-center gap-1">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span id="provider-hero-location">Location</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Top Actions -->
+          <div class="flex flex-col gap-2">
+            <button type="button" id="provider-profile-fav-btn" class="btn btn-outline btn-sm flex items-center gap-1">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+              </svg>
+              <span class="fav-text">Save</span>
+            </button>
+            <button type="button" id="provider-share-btn" class="btn btn-secondary btn-sm flex items-center gap-1">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+              Share Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Content & Sticky Booking Widget -->
+    <section class="section-sm">
+      <div class="container">
+        <div class="profile-layout-grid">
+          
+          <!-- Left Column (Details, Services, Gallery, Reviews) -->
+          <div>
+            <!-- About Section -->
+            <div class="profile-card-section">
+              <h3>About the Professional</h3>
+              <p id="provider-about-text" style="line-height: 1.7; margin-bottom: 1.25rem;"></p>
+              
+              <div style="background-color: var(--color-bg); padding: 1rem 1.25rem; border-radius: var(--radius-md); border-left: 4px solid var(--color-primary); font-size: 0.9rem; color: var(--color-primary); font-weight: 600;">
+                <span id="provider-experience-text">Verified Credentials</span>
+              </div>
+            </div>
+
+            <!-- Services Offered & Pricing -->
+            <div class="profile-card-section">
+              <div class="flex items-center justify-between" style="margin-bottom: 1rem;">
+                <h3>Services & Rates</h3>
+                <span style="font-size: 0.85rem; color: var(--color-text-muted);">Transparent flat pricing</span>
+              </div>
+              <div id="provider-services-list" class="services-list-table">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Work Photos & Portfolio -->
+            <div class="profile-card-section">
+              <h3>Recent Work Portfolio</h3>
+              <div id="provider-gallery" class="gallery-grid">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div class="profile-card-section">
+              <div class="flex items-center justify-between" style="margin-bottom: 1.5rem;">
+                <div>
+                  <h3 style="margin-bottom: 0.25rem; border: none; padding: 0;">Verified Client Reviews</h3>
+                  <div id="reviews-score-header" style="font-size: 0.9rem; color: var(--color-text-muted);"></div>
+                </div>
+                <button type="button" id="open-review-modal-btn" class="btn btn-outline btn-sm">
+                  Write a Review
+                </button>
+              </div>
+
+              <div id="provider-reviews-list">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Sticky Booking Card) -->
+          <div>
+            <div class="booking-widget-sticky">
+              <div class="widget-price-header">
+                <div>
+                  <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--color-text-muted); font-weight: 600;">Starting Rate</div>
+                  <div id="widget-price-rate" class="widget-rate">₹299 <span>/visit</span></div>
+                </div>
+                <span class="badge badge-status-completed">Instant Booking</span>
+              </div>
+
+              <div style="margin-bottom: 1.5rem;">
+                <div style="font-size: 0.85rem; font-weight: 600; color: var(--color-primary); margin-bottom: 0.5rem;">Why book on LocalConnect?</div>
+                <ul style="list-style: none; font-size: 0.85rem; color: var(--color-text-secondary); display: flex; flex-direction: column; gap: 0.4rem;">
+                  <li class="flex items-center gap-1">
+                    <span style="color: var(--color-success); font-weight: 700;">✓</span> No booking fees or hidden charges
+                  </li>
+                  <li class="flex items-center gap-1">
+                    <span style="color: var(--color-success); font-weight: 700;">✓</span> Direct message & instant confirmation
+                  </li>
+                  <li class="flex items-center gap-1">
+                    <span style="color: var(--color-success); font-weight: 700;">✓</span> Free cancellation up to 2 hours prior
+                  </li>
+                  <li class="flex items-center gap-1">
+                    <span style="color: var(--color-success); font-weight: 700;">✓</span> Payment held safely until job is done
+                  </li>
+                </ul>
+              </div>
+
+              <a id="widget-book-now-btn" href="booking.html" class="btn btn-accent btn-lg" style="width: 100%; text-align: center;">
+                Book This Professional
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+
+              <div style="text-align: center; margin-top: 1rem; font-size: 0.8rem; color: var(--color-text-muted);">
+                ⚡ Average confirmation time: Under 15 mins
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Review Submission Modal -->
+  <div id="review-modal" class="modal-overlay">
+    <div class="modal-dialog">
+      <button type="button" id="close-review-modal-btn" class="modal-close-btn" aria-label="Close modal">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <h3 style="margin-bottom: 0.5rem;">Rate & Review Service</h3>
+      <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 1.5rem;">
+        Your honest feedback helps neighbors in your community choose reliable professionals.
+      </p>
+
+      <form id="submit-review-form">
+        <div class="form-group">
+          <label class="form-label">Overall Rating</label>
+          <select id="review-rating-select" class="form-control" required>
+            <option value="5">★★★★★ 5 - Outstanding Work</option>
+            <option value="4">★★★★☆ 4 - Very Good</option>
+            <option value="3">★★★☆☆ 3 - Satisfactory</option>
+            <option value="2">★★☆☆☆ 2 - Below Expectations</option>
+            <option value="1">★☆☆☆☆ 1 - Poor Experience</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" id="review-author-input" class="form-control" placeholder="e.g. Alex M." required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Review Details</label>
+          <textarea id="review-text-input" class="form-control" rows="4" placeholder="Describe the quality of work, punctuality, and communication..." required></textarea>
+        </div>
+
+        <div class="flex justify-between items-center" style="margin-top: 2rem;">
+          <button type="button" class="btn btn-outline btn-sm" onclick="document.getElementById('review-modal').classList.remove('active');">Cancel</button>
+          <button type="submit" class="btn btn-accent btn-sm">Submit Review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="brand-logo" style="color: #FFFFFF;">
+            <div class="brand-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M3 10.5L12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6a2 2 0 0 0-2-2h-2a2 2 0 0 0-2 2v6H4a1 1 0 0 1-1-1v-9.5z"/>
+              </svg>
+            </div>
+            <span>Local<span style="color: var(--color-accent);">Connect</span></span>
+          </a>
+          <p>
+            The trusted local services marketplace. Connecting quality homeowners and businesses with vetted local trade specialists.
+          </p>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Popular Services</h4>
+          <ul class="footer-links">
+            <li><a href="services.html?category=Plumbing">Plumbing Services</a></li>
+            <li><a href="services.html?category=Electrical">Electrical Wiring</a></li>
+            <li><a href="services.html?category=Cleaning">Home & Deep Cleaning</a></li>
+            <li><a href="services.html?category=Repairs">Appliance Repair</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Customers</h4>
+          <ul class="footer-links">
+            <li><a href="services.html">Find a Provider</a></li>
+            <li><a href="dashboard.html">My Bookings</a></li>
+            <li><a href="dashboard.html">Saved Favorites</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="footer-col-title">Service Providers</h4>
+          <ul class="footer-links">
+            <li><a href="provider-dashboard.html">Provider Dashboard</a></li>
+            <li><a href="provider-dashboard.html#pro">LocalConnect Pro</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 LocalConnect Marketplace India Pvt. Ltd. All rights reserved.</div>
+        <div class="flex gap-3">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/provider.js"></script>
+</body>
+</html>
